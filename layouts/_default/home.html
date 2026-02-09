@@ -1,0 +1,142 @@
+{{ define "header" }}
+<style>
+  .home-menu-toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    padding: 0.5rem;
+  }
+  .home-menu-toggle button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .home-menu-toggle svg {
+    fill: white;
+  }
+</style>
+<div class="home-menu-toggle">
+  <button id="menu-toggle" aria-label="Toggle menu">
+    <svg width="24" height="24" viewBox="0 0 24 24">
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </svg>
+  </button>
+</div>
+{{ partial "menu.html" . }}
+{{ end }}
+
+{{ define "main" }}
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .video-hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .video-hero video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+  }
+
+  .video-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .video-hero-text {
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  }
+
+  .hero-name {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .hero-roles {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  @media (max-width: 768px) {
+    .hero-name {
+      font-size: 2rem;
+    }
+    .hero-roles {
+      font-size: 1rem;
+    }
+  }
+
+  .featured-section {
+    max-width: 1400px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+  }
+
+  .featured-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+</style>
+
+<div class="video-hero">
+  <video autoplay muted loop playsinline>
+    <source src="https://video.wixstatic.com/video/3c900a_8f3096d9dbb24e37a15395efd6af83c9/1080p/mp4/file.mp4" type="video/mp4">
+  </video>
+  <div class="video-hero-overlay">
+    <div class="video-hero-text">
+      <h1 class="hero-name">SIMON CRAMAR</h1>
+      <p class="hero-roles">RÉALISATEUR | CADREUR | MONTEUR</p>
+    </div>
+  </div>
+</div>
+
+<div class="featured-section">
+  <h2>Travaux Récents</h2>
+  {{ $featured := where .Site.RegularPages "Section" "videos" | first 6 }}
+  {{ if $featured }}
+    <section class="galleries">
+      {{ range $featured }}
+        {{ partial "album-card.html" . }}
+      {{ end }}
+    </section>
+  {{ end }}
+</div>
+
+{{ end }}

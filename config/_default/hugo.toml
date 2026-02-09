@@ -1,0 +1,53 @@
+copyright = "© Simon Cramar"
+defaultContentLanguage = "fr"
+disableKinds = ["taxonomy"]
+enableRobotsTXT = true
+languageCode = "fr-FR"
+timeZone = "Europe/Paris"
+timeout = "120s"
+title = "Simon Cramar - Photographe et Vidéaste"
+
+[params]
+  defaultTheme = "dark"
+  description = "Chasseur d'images, capturant l'espace-temps..."
+  title = "Simon Cramar"
+  [params.author]
+    email = "simon.cramar@gmail.com"
+    name = "Simon Cramar"
+  [params.socialIcons]
+    email = "mailto:simon.cramar@gmail.com"
+    youtube = "https://www.youtube.com/@simoncramar"
+    #facebook = "https://www.facebook.com/"
+    #instagram = "https://www.instagram.com/"
+  [params.gallery]
+    boxSpacing = 8
+    targetRowHeight = 288
+    targetRowHeightTolerance = 0.25
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+  page = ["HTML"]
+  section = ["HTML"]
+
+[imaging]
+  quality = 85
+  resampleFilter = "CatmullRom"
+  [imaging.exif]
+    disableDate = false
+    disableLatLong = true
+    includeFields = "ImageDescription|Orientation"
+
+[menu]
+  [[menu.footer]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 1
+
+[services]
+  [services.rss]
+    limit = 100
