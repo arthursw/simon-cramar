@@ -14,7 +14,11 @@ videos:
     date: 2019-07-01
   - url: https://www.facebook.com/proridebelgium/videos/1617590061694832
     title: Proride 2018 - Official Aftermovie
+    thumbnail: /images/proride-2018.jpg
     date: 2018-09-01
+  - url: https://www.youtube.com/watch?v=LAsD13ca3-A
+    title: Echelon
+    date: 2014-09-01
   - url: https://www.youtube.com/watch?v=B7xkuq1Mk38
     title: Open Beatz Festival 2018 - Official Aftermovie
     date: 2018-08-01
